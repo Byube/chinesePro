@@ -1,0 +1,21 @@
+mybatis:
+  type-aliases-package: com.dnk.chinese.dto
+  mapperLocations: classpath:mapping/*.xml
+server:
+  port: 8080
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    static-path-pattern: /resources/**
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@119.197.184.251:1521/xe
+    username: APPLE
+    password: apple
+    servlet:
+      multipart:
+        enabled: true
+        max-file-size: 100MB
+        max-request-size: 100MB
