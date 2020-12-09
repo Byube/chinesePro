@@ -124,47 +124,6 @@
             <version>1.1</version>
         </dependency>
 
-        <!-- Ads client library dependencies -->
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>ads-lib</artifactId>
-            <version>4.11.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>adwords-axis</artifactId>
-            <version>4.11.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>ads-lib</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>dfp-axis</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads</artifactId>
-            <version>9.0.0</version>
-        </dependency>
-
-        <!-- Third party dependencies -->
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-jackson2</artifactId>
-            <version>1.23.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.beust</groupId>
-            <artifactId>jcommander</artifactId>
-            <version>1.48</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
