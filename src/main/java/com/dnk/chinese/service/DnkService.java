@@ -1,8 +1,11 @@
 package com.dnk.chinese.service;
 
-import com.dnk.chinese.dto.ChineseClass;
-import org.springframework.stereotype.Service;
+
+import com.dnk.chinese.dto.ChineseDto;
+
+
 
 public interface DnkService {
-    public ChineseClass getStudentDetail(String id);
+    public ChineseDto getStudentDetail(String	id);
+  
 }

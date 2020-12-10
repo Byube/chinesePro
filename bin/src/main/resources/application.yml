@@ -1,5 +1,5 @@
 mybatis:
-  type-aliases-package: com.dnk.chinese.dto
+  type-aliases-package: com.dnk.demo.dto
   mapperLocations: classpath:mapping/*.xml
 server:
   port: 8080
