@@ -11,9 +11,9 @@ spring:
     static-path-pattern: /resources/**
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@119.197.184.251:1521/xe
-    username: APPLE
-    password: apple
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: A
+    password: a
     servlet:
       multipart:
         enabled: true
