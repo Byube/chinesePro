@@ -3,12 +3,32 @@
 
 <mapper namespace="com.dnk.chinese.dao.DnkDao">
 
-    <select id="getStudentDetail" parameterType="String" resultType="ChineseClass">
+    <select id="getStudentDetail" parameterType="String" resultType="ChineseDto">
         select  student_seq
         		,to_char(student_brith,'yyyy-mm-dd') as student_brith
         from    chineseclass
         where	student_name = #{data}
         and		student_status = 10
+    </select>
+    
+    <select id="getClassDetail" parameterType="ChineseDto" resultType="ClassDto">
+    	select	*
+    	from	classdetail
+    
+    </select>
+    
+    <select id="getHomeWorkTitle" parameterType="ChineseDto" resultType="HomeDto">
+    	select  homework_title
+		from    homeworkdetail
+		where   student_num = #{student_seq}
+    </select>
+    
+    <select id="getHDetail" parameterType="HomeDto" resultType="HomeDto">
+    	select  homework_detail_or
+        		,homework_detail_af
+		from    homeworkdetail
+		where   student_num = ${student_num}
+		and		homework_title = ${homework_title}
     </select>
     
   

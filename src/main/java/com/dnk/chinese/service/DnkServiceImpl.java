@@ -1,9 +1,12 @@
 package com.dnk.chinese.service;
 
 import com.dnk.chinese.dao.DnkDao;
-import com.dnk.chinese.dto.ChineseDto;
+import com.dnk.chinese.dto.*;
 
 import groovy.util.logging.Slf4j;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +24,31 @@ public class DnkServiceImpl implements DnkService {
 
     @Override
     public ChineseDto getStudentDetail(String id) {
-        log.info("getStudentDetail >> name : " + id);        
+        log.info("getStudentDetail >> name : " + id);             
         return dao.getStudentDetail(id);
     }
+
+	@Override
+	public List<ClassDto> getClassDetail(ChineseDto cd) {
+		List<ClassDto> list = new ArrayList<ClassDto>();
+		
+		return null;
+	}
+
+	@Override
+	public List<HomeDto> getHomeWorkTitle(ChineseDto cd) {
+		List<HomeDto> list = new ArrayList<HomeDto>();
+		list = dao.getHomeWorkTitle(cd);
+		return list;
+	}
+
+	@Override
+	public List<HomeDto> getHDetail(HomeDto hd) {
+		return dao.getHDetail(hd);
+	}
+	
+    
+    
 
 	
 
