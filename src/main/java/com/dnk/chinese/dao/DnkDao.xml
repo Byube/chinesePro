@@ -14,23 +14,27 @@
     <select id="getClassDetail" parameterType="ChineseDto" resultType="ClassDto">
     	select	*
     	from	classdetail
-    
     </select>
     
     <select id="getHomeWorkTitle" parameterType="ChineseDto" resultType="HomeDto">
     	select  homework_title
+    			,homework_seq
 		from    homeworkdetail
 		where   student_num = #{student_seq}
     </select>
     
     <select id="getHDetail" parameterType="HomeDto" resultType="HomeDto">
-    	select  homework_detail_or
-        		,homework_detail_af
+    	select  *
 		from    homeworkdetail
-		where   student_num = ${student_num}
-		and		homework_title = ${homework_title}
+		where   homework_seq = ${homework_seq}
     </select>
     
+    <update id="modHomeWork" parameterType="HomeDto">
+    	update	homeworkdetail
+    	set		homework_detail_or = #{homework_detail_or}
+    			,homework_diary_or = #{homework_diary_or}
+    	where	homework_seq = #{homework_seq}
+    </update>
   
 
 </mapper>

@@ -12,4 +12,5 @@ public interface DnkDao {
     public List<ClassDto> getClassDetail(ChineseDto cd);
     public List<HomeDto> getHomeWorkTitle(ChineseDto cd);
     public List<HomeDto> getHDetail(HomeDto hd);
+    public void modHomeWork(HomeDto hd);
 }

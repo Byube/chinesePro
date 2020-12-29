@@ -434,6 +434,18 @@ a:hover, a:active, a:focus {
 #contact input[type="submit"]:hover {
   background: #000;
 }
+#contact input[type="button"] {
+  background: #222;
+  border-radius: 100px;
+  border: none;
+  color: #ffffff;
+  font-weight: 400;
+  transition: all 0.4s ease-in-out;
+}
+
+#contact input[type="button"]:hover {
+  background: #000;
+}
 
 
 
@@ -586,6 +598,19 @@ a:hover, a:active, a:focus {
   background: #000;
   border-color: transparent;
 }
+.blog-comment-form input[type="button"] {
+  background: #222;
+  border-radius: 100px;
+  border: none;
+  color: #ffffff;
+  font-weight: 400;
+  transition: all 0.4s ease-in-out;
+}
+
+.blog-comment-form input[type="button"]:hover {
+  background: #000;
+  border-color: transparent;
+}
 
 
 
@@ -659,6 +684,14 @@ footer .footer-copyright {
 .social-icon li a:hover {
     color: #000;
     transform: scale(1.1);
+}
+
+#diary #hw {
+	font-family: "SimHei";
+	font-size: 28px;
+}
+#xiao {
+	font-family: "SimHei";
 }
 
 

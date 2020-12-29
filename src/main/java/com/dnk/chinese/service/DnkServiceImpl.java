@@ -46,6 +46,11 @@ public class DnkServiceImpl implements DnkService {
 	public List<HomeDto> getHDetail(HomeDto hd) {
 		return dao.getHDetail(hd);
 	}
+
+	@Override
+	public void modHomeWork(HomeDto hd) {
+		dao.modHomeWork(hd);		
+	}
 	
     
     
