@@ -17,10 +17,11 @@
     </select>
     
     <select id="getHomeWorkTitle" parameterType="ChineseDto" resultType="HomeDto">
-    	select  homework_title
-    			,homework_seq
-		from    homeworkdetail
-		where   student_num = #{student_seq}
+    	select  	homework_title
+    				,homework_seq
+		from    	homeworkdetail
+		where   	student_num = #{student_seq}
+		order by 	homework_seq desc
     </select>
     
     <select id="getHDetail" parameterType="HomeDto" resultType="HomeDto">
@@ -35,6 +36,18 @@
     			,homework_diary_or = #{homework_diary_or}
     	where	homework_seq = #{homework_seq}
     </update>
+    
+    <insert id="insertHonmeWork" parameterType="HomeDto">
+    	insert	into
+    	homeworkdetail
+    	values	(
+    	home_seq.nextval
+    	,#{student_num}
+    	,to_char(SYSDATE, 'YYYYMMDD')
+    	,#{homework_detail_or}
+    	,#{homework_diary_or}
+    	)
+    </insert>
   
 
 </mapper>

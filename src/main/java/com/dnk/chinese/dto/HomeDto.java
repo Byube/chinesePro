@@ -12,8 +12,5 @@ public class HomeDto {
     private int student_num;
     private String homework_title;
     private String homework_detail_or;
-    private String homework_detail_af;
     private String homework_diary_or;
-    private String homework_diary_af;
-
 }

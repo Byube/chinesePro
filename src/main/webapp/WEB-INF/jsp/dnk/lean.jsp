@@ -74,6 +74,8 @@
 				</div>
 				<form action="/goNewClass" method="post" id="getNew">
 					<input type="hidden" id="hsq" name="hsq">
+					<input type="hidden" name="id" value="${id}">
+					<input type="hidden" name="student_seq" value="${student_seq}">
 				</form>
 				<c:forEach items="${homelist }" var="home" varStatus="cnt">
 					<div class="col-md-4 col-sm-6">

@@ -31,7 +31,6 @@ public class DnkServiceImpl implements DnkService {
 	@Override
 	public List<ClassDto> getClassDetail(ChineseDto cd) {
 		List<ClassDto> list = new ArrayList<ClassDto>();
-		
 		return null;
 	}
 
@@ -51,6 +50,12 @@ public class DnkServiceImpl implements DnkService {
 	public void modHomeWork(HomeDto hd) {
 		dao.modHomeWork(hd);		
 	}
+
+	@Override
+	public void insertHonmeWork(HomeDto hd) {
+		dao.insertHonmeWork(hd);	
+	}
+	
 	
     
     

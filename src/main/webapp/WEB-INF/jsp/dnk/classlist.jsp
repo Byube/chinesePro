@@ -63,17 +63,17 @@
 											<div class="blog-comment">
 												<div class="media">
 													<div class="media-body">
-														<h3 class="media-heading">Diary</h3>
+														<h3 class="media-heading">日记</h3>
 													</div>
 												</div>
 											</div>
 											<c:forTokens items="${hl.homework_diary_or}" delims="#"
 												var="diary">
 												<input type="text" class="form-control" name="diary"
-													value="${diary }" readonly="readonly" required>
+													value="${diary }" readonly="readonly" style="font-family:'SimHei';font-size: 22px;" required>
 												<br />
 												<input type="text" class="form-control" name="mdiary"
-													value="${diary }" required>
+													value="${diary }" style="font-family:'SimHei';font-size: 22px;" required>
 												<br />
 											</c:forTokens>
 
@@ -81,24 +81,25 @@
 											<hr size="5" width="100%" color="black">
 											<br /> 
 											<input type="hidden" value="${hl.homework_seq }" name="hsq">
+											<input type="hidden" value="${id }" name="id">
 											<div class="blog-comment">
 												<div class="media">
 													<div class="media-body">
-														<h3 class="media-heading">Contents</h3>
+														<h3 class="media-heading">单词</h3>
 													</div>
 												</div>
 											</div>
 											<c:forTokens items="${hl.homework_detail_or}" delims="#"
 												var="hdo">
 												<input type="text" class="form-control" name="hw"
-													value="${hdo }" readonly="readonly" required>
+													value="${hdo }" readonly="readonly" style="font-family:'SimHei';font-size: 22px;" required>
 												<br />
-												<input type="text" class="form-control" name="mhw"
+												<input type="text" class="form-control" name="mhw" style="font-family:'SimHei';font-size: 22px;"
 													value="${hdo }" required>
 												<br />
 											</c:forTokens>
 											<div class="col-md-3 col-sm-4">
-												<input type="submit" class="form-control" value="保存">
+												<input type="submit" class="form-control" value="修改保存">
 											</div>
 
 										</div>
@@ -114,7 +115,7 @@
 			<section id="blog-single-post">
 				<div class="container">
 					<div class="row">
-							<form action="/insertHw" method="post">
+							<form action="/insertHw" method="post" onsubmit="return check()" id="insertHw">
 							<div class="col-md-offset-1 col-md-10 col-sm-12">
 								<div class="blog-single-post-thumb">
 									<div class="blog-post-image">
@@ -134,10 +135,13 @@
 												</div>
 											</div>
 										</div>
-										<textarea class="form-control" name="diary" id="diary" rows="30"></textarea>
+										<textarea class="form-control" style="font-family:'SimHei';font-size: 22px;" name="diary" id="diary" rows="30"></textarea>
 										<hr size="5" width="100%" color="black">
 										<hr size="5" width="100%" color="black">
 										<br />
+										
+										<input type="hidden" name="id" value="${id }">
+										<input type="hidden" name="student_seq" value="${student_seq}">
 										<div class="blog-comment">
 											<div class="media">
 												<div class="media-body">
@@ -145,9 +149,9 @@
 												</div>
 											</div>
 										</div>
-										<textarea class="form-control" name="hw" id="hw" rows="30"></textarea>
+										<textarea class="form-control" style="font-family:'SimHei';font-size: 22px;" name="hw" id="hw" rows="30"></textarea>
 										<div class="col-md-3 col-sm-4">
-											<input type="button" class="form-control" value="保存">
+											<input type="submit" class="form-control" id="sub" value="保存">
 										</div>							
 									</div>
 								</div>

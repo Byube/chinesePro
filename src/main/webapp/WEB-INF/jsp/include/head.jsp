@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
+<spring:eval expression="@environment.getProperty('PATH_JS')" var="JsUrl"></spring:eval>
+
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -21,6 +25,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700"
 	rel="stylesheet">
+<script src="${JsUrl}/head.js"></script>
 </head>
 <body>
 	<!-- PRE LOADER -->
@@ -43,11 +48,11 @@
 					<span class="icon icon-bar"></span> <span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="/start" class="navbar-brand"><i class="fa fa-magnet"></i></a>
+				<a href="javascript:;" onclick="goclassStart()" class="navbar-brand"><i class="fa fa-magnet"></i></a>
 			</div>
 			<div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/startlean?id=${id }">课程</a></li>
+                    <li><a href="javascript:;" onclick="goclasslist('${id}')">课程</a></li>
                </ul>
           </div>
 		</div>
