@@ -11,9 +11,10 @@
         and		student_status = 10
     </select>
     
-    <select id="getClassDetail" parameterType="ChineseDto" resultType="ClassDto">
+    <select id="getClassDetail" resultType="ClassDto">
     	select	*
     	from	classdetail
+    	where	student_num = 99
     </select>
     
     <select id="getHomeWorkTitle" parameterType="ChineseDto" resultType="HomeDto">
@@ -46,6 +47,19 @@
     	,to_char(SYSDATE, 'YYYYMMDD')
     	,#{homework_detail_or}
     	,#{homework_diary_or}
+    	)
+    </insert>
+    
+    <insert id="insertClass" parameterType="ClassDto">
+    	insert	into
+    	classdetail
+    	values (
+    	class_seq.nextval
+    	,#{student_num}
+    	,#{class_title}
+    	,#{class_title_sub}
+    	,#{class_detail_or}
+    	,#{class_detail_af}
     	)
     </insert>
   

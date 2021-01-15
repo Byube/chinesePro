@@ -38,7 +38,7 @@
 
 	<!-- PRE LOADER -->
 
-	<jsp:include page="../include/head.jsp" flush="false"></jsp:include>
+	<jsp:include page="../include/head.jsp" flush="false" ></jsp:include>
 
 	<!-- Blog Single Post Section -->
 	<c:choose>
@@ -63,17 +63,17 @@
 											<div class="blog-comment">
 												<div class="media">
 													<div class="media-body">
-														<h3 class="media-heading">日记</h3>
+														<h1 class="media-heading">日记</h1>
 													</div>
 												</div>
 											</div>
 											<c:forTokens items="${hl.homework_diary_or}" delims="#"
 												var="diary">
 												<input type="text" class="form-control" name="diary"
-													value="${diary }" readonly="readonly" style="font-family:'SimHei';font-size: 22px;" required>
+													value="${diary }" readonly="readonly" style="font-family:'SimHei';font-size: 28px;" required>
 												<br />
 												<input type="text" class="form-control" name="mdiary"
-													value="${diary }" style="font-family:'SimHei';font-size: 22px;" required>
+													value="${diary }" style="font-family:'SimHei';font-size: 28px;" required>
 												<br />
 											</c:forTokens>
 
@@ -85,16 +85,16 @@
 											<div class="blog-comment">
 												<div class="media">
 													<div class="media-body">
-														<h3 class="media-heading">单词</h3>
+														<h1 class="media-heading">单词</h1>
 													</div>
 												</div>
 											</div>
 											<c:forTokens items="${hl.homework_detail_or}" delims="#"
 												var="hdo">
 												<input type="text" class="form-control" name="hw"
-													value="${hdo }" readonly="readonly" style="font-family:'SimHei';font-size: 22px;" required>
+													value="${hdo }" readonly="readonly" style="font-family:'SimHei';font-size: 28px;" required>
 												<br />
-												<input type="text" class="form-control" name="mhw" style="font-family:'SimHei';font-size: 22px;"
+												<input type="text" class="form-control" name="mhw" style="font-family:'SimHei';font-size: 28px;"
 													value="${hdo }" required>
 												<br />
 											</c:forTokens>
@@ -135,7 +135,7 @@
 												</div>
 											</div>
 										</div>
-										<textarea class="form-control" style="font-family:'SimHei';font-size: 22px;" name="diary" id="diary" rows="30"></textarea>
+										<textarea class="form-control" style="font-family:'SimHei'; font-size: 38px;" name="diary" id="diary" rows="30"></textarea>
 										<hr size="5" width="100%" color="black">
 										<hr size="5" width="100%" color="black">
 										<br />
@@ -149,7 +149,7 @@
 												</div>
 											</div>
 										</div>
-										<textarea class="form-control" style="font-family:'SimHei';font-size: 22px;" name="hw" id="hw" rows="30"></textarea>
+										<textarea class="form-control" style="font-family:'SimHei';font-size: 38px;" name="hw" id="hw" rows="30"></textarea>
 										<div class="col-md-3 col-sm-4">
 											<input type="submit" class="form-control" id="sub" value="保存">
 										</div>							

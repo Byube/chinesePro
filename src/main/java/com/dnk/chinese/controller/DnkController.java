@@ -1,6 +1,7 @@
 package com.dnk.chinese.controller;
 
 import com.dnk.chinese.dto.ChineseDto;
+import com.dnk.chinese.dto.ClassDto;
 import com.dnk.chinese.dto.HomeDto;
 import com.dnk.chinese.service.DnkService;
 import groovy.util.logging.Slf4j;
@@ -44,6 +45,7 @@ public class DnkController {
 		String address = "dnk/login";
 		return address;
 	}
+	
 
 	@RequestMapping(value = "/startlean")
 	public String startlean(@RequestParam(value = "id", defaultValue = "-") String id
@@ -62,8 +64,11 @@ public class DnkController {
 			model.addAttribute("id", id);
 			List<HomeDto> homelist = dnkService.getHomeWorkTitle(cnc);
 			model.addAttribute("homelist", homelist);
+			List<ClassDto> classlist = dnkService.getClassDetail();
+			model.addAttribute("classlist",classlist);
 		} catch (Exception e) {
-			address = "dnk/omg";
+			log.info("error"+e);
+			address = "dnk/login";
 		}
 		return address;
 	}
@@ -99,12 +104,13 @@ public class DnkController {
 							,@RequestParam(value = "id", defaultValue = "-") String id
 							,Model model) {
 		log.info("modHomeWork >>> ");
-		log.info("Student : " + id);
-		log.info("ModHomeWork Test" + hsq);
+//		log.info("Student : " + id);
+//		log.info("ModHomeWork Test" + hsq);
 		model.addAttribute("id",id);
 		String md = "";
 		String hw = "";
 		HomeDto hd = new HomeDto();
+		String encodingId = "";
 		hd.setHomework_seq(hsq);
 		for (int i = 0; i < mdiary.size(); i++) {
 			if (i == mdiary.size() - 1) {
@@ -114,7 +120,6 @@ public class DnkController {
 			}
 		}
 		hd.setHomework_diary_or(md);
-		log.info(md);
 		for (int i = 0; i < mhw.size(); i++) {
 			if (i == mhw.size() - 1) {
 				hw += mhw.get(i);
@@ -124,7 +129,12 @@ public class DnkController {
 		}
 		hd.setHomework_detail_or(hw);
 		dnkService.modHomeWork(hd);
-		return "redirect:/goNewClass?hsq=" + hsq;
+		try {
+			encodingId = URLEncoder.encode(id, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			log.info(e.getMessage());
+		}
+		return "redirect:/goNewClass?hsq=" + hsq + "&id=" + encodingId;
 	}
 	@RequestMapping(value = "/insertHw")
 	public String insertHonmeWork(Model model
@@ -159,14 +169,54 @@ public class DnkController {
 		hd.setHomework_diary_or(ndiary);
 		hd.setStudent_num(student_seq);
 		dnkService.insertHonmeWork(hd);
-		log.info("redirect:/startlean?id=" + id);
 		try {
 			encodingId = URLEncoder.encode(id, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			log.info(e.getMessage());
 		}
 		String address = "redirect:/startlean?id=" + encodingId;
 		return address;
 	}
+	
+	@RequestMapping(value = "/goClass2")
+	public String goClass2() {
+		String address = "dnk/classlist2";
+		return address;
+	}
+	@RequestMapping(value = "/insertClass")
+	public String insertClass(Model model
+								,@RequestParam(value = "id", defaultValue = "-") String id
+								,@RequestParam(value = "class_title", defaultValue = "-") String class_title
+								,@RequestParam(value = "class_title_sub", defaultValue = "-") String class_title_sub
+								,@RequestParam(value = "classdetail", defaultValue = "-") String classdetail
+								,@RequestParam(value = "check", defaultValue = "-") String check
+								) {
+		model.addAttribute("id", id);
+		ClassDto cd = new ClassDto();
+		ChineseDto cnc = new ChineseDto();
+		String address = "dnk/insertClass";
+		String encodingId = "";
+		cnc.setStudent_seq(99);
+		if (check.equals("ok")) {
+			if (id.equals("-")) {
+				address = "dnk/login";
+			} else {
+				try {
+					encodingId = URLEncoder.encode(id, "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					log.info(e.getMessage());
+				}
+				address = "redirect:/startlean?id=" + encodingId;
+			}
+			cd.setStudent_num(cnc.getStudent_seq());
+			cd.setClass_detail_or(classdetail);
+			cd.setClass_title(class_title);
+			cd.setClass_title_sub(class_title_sub);
+			cd.setClass_detail_af("没有资料");
+			dnkService.insertClass(cd);
+			log.info("添加课文非常顺利的成功了！！");
+		}			
+		return address;
+	}
+	
 }

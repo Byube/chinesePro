@@ -686,13 +686,6 @@ footer .footer-copyright {
     transform: scale(1.1);
 }
 
-#diary #hw {
-	font-family: "SimHei";
-	font-size: 50px;
-}
-#xiao {
-	font-family: "SimHei";
-}
 
 
 
@@ -744,5 +737,14 @@ footer .footer-copyright {
   }
 
 }
+
+#diary #hw {
+	font-family: "SimHei";
+	font-size: 50px;
+}
+#xiao {
+	font-family: "SimHei";
+}
+
 
 

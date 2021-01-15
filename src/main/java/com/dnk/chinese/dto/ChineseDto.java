@@ -12,7 +12,4 @@ public class ChineseDto {
     private String student_name;
     private String student_brith;
     private String student_status;
-    
-  
-
 }

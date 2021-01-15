@@ -5,3 +5,6 @@
 	  $("#hsq").val(ht);
 	  $("#getNew").submit();
 	}
+	function goclassDetail(){
+	
+	}

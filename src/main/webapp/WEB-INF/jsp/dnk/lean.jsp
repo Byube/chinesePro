@@ -52,11 +52,19 @@
 			</div>
 		</div>
 	</section>
-
 	<!-- Portfolio Section -->
-
 	<section id="portfolio">
 		<div class="container">
+			<div class="col-md-4 col-sm-6">
+				<h3>课文</h3>
+				<ul>
+				
+				<c:forEach items="${classlist }" var="cd" varStatus="cnt">
+					<li><a href="javascript:;" onclick="goclassDetail()" style="font-size: 26px;">${cd.class_title }</a></li>
+					</c:forEach>
+				</ul>
+			</div>
+			
 			<div class="row">
 				<div class="col-md-4 col-sm-6">
 					<a href="javascript:;" onclick="getClass(0)">
@@ -73,20 +81,20 @@
 					</a>
 				</div>
 				<form action="/goNewClass" method="post" id="getNew">
-					<input type="hidden" id="hsq" name="hsq">
-					<input type="hidden" name="id" value="${id}">
-					<input type="hidden" name="student_seq" value="${student_seq}">
+					<input type="hidden" id="hsq" name="hsq"> <input
+						type="hidden" name="id" value="${id}"> <input
+						type="hidden" name="student_seq" value="${student_seq}">
 				</form>
 				<c:forEach items="${homelist }" var="home" varStatus="cnt">
 					<div class="col-md-4 col-sm-6">
 						<a href="javascript:;" onclick="getClass(${home.homework_seq})">
 							<div class="portfolio-thumb">
-								<img src="${ImgUrl}/portfolio-img1.jpg" class="img-responsive"
+								<img src="${ImgUrl}/portfolio-img4.jpg" class="img-responsive"
 									alt="Portfolio">
 								<div class="portfolio-overlay">
 									<div class="portfolio-item">
 										<h3>${home.homework_title}</h3>
-										<small>Brand Identity</small>
+										<small>作业</small>
 									</div>
 								</div>
 							</div>
@@ -94,63 +102,7 @@
 					</div>
 				</c:forEach>
 
-				<%--
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="${ImgUrl}/portfolio-img3.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Mobile App</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
 
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="${ImgUrl}/portfolio-img4.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Logo Design</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="${ImgUrl}/portfolio-img5.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Social marketing</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="${ImgUrl}/portfolio-img6.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Fyler Design</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
- --%>
 				<div class="col-md-12 col-sm-12 text-center">
 					<h3>${student_brith }</h3>
 				</div>

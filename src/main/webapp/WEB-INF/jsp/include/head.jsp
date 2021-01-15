@@ -52,7 +52,8 @@
 			</div>
 			<div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:;" onclick="goclasslist('${id}')">课程</a></li>
+                    <li><a href="javascript:;" onclick="goclasslist('${id}')" style="font-size: 28px;">课程</a></li>
+                    <li><a href="javascript:;" onclick="insertClass('${id}')"   style="font-size: 28px;">添加课文</a></li>
                </ul>
           </div>
 		</div>

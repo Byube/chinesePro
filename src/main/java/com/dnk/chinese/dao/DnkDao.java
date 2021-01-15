@@ -9,9 +9,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface DnkDao {
     public ChineseDto getStudentDetail(String id);   
-    public List<ClassDto> getClassDetail(ChineseDto cd);
+    public List<ClassDto> getClassDetail();
     public List<HomeDto> getHomeWorkTitle(ChineseDto cd);
     public List<HomeDto> getHDetail(HomeDto hd);
     public void modHomeWork(HomeDto hd);
     public void insertHonmeWork(HomeDto hd);
+    public void insertClass(ClassDto cd);
 }
