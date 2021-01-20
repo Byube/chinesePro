@@ -45,36 +45,43 @@
 			<section id="blog-single-post">
 				<div class="container">
 					<div class="row">
-							<form action="#" method="post" onsubmit="return check()" id="insertHw">
+							<form action="/modclass" method="post" id="modclass">
 							<div class="col-md-offset-1 col-md-10 col-sm-12">
 								<div class="blog-single-post-thumb">
 									<div class="blog-post-image">
-										<img src="${ImgUrl}/blog-image1.jpg" class="img-responsive"
+										<img src="${ImgUrl}/blog-image2.jpg" class="img-responsive"
 											alt="Blog Image">
 									</div>
-
+									<c:forEach items="${classlist }" var="cl">
 									<div class="blog-post-title">
-										<h2>여긴 타이틀</h2>
+										<h2>${cl.class_title}</h2>
 									</div>
-
+									<input type="hidden" name="class_title" value="${cl.class_title}">
+									<input type="hidden" name="class_title_sub" value="${cl.class_title_sub}">
+									<input type="hidden" name="student_seq" value="${student_seq }">
+									<input type="hidden" name="id" id="idis" value="${id }">
+									<input type="hidden" name="class_seq" id="class_seq" value="${cl.class_seq }">
 									<div class="blog-comment-form">
 										<div class="blog-comment">
 											<div class="media">
 												<div class="media-body">
-													<h3 class="media-heading" id="xiao">课文详细内容</h3>
+													<h3 class="media-heading" style="font-family: 'SimHei';">${cl.class_title_sub }</h3>
 												</div>
 											</div>
 										</div>
-										<textarea class="form-control" style="font-family:'SimHei'; font-size: 38px;" name="diary" id="diary" rows="30"></textarea>
+										<textarea class="form-control" style="font-family:'Chinese Pinyin'; font-size: 38px;" name="class_detail_af" id="class_detail_af" rows="30">${cl.class_detail_or }</textarea>
 										<hr size="5" width="100%" color="black">
 										<hr size="5" width="100%" color="black">
+										<!-- <input type="text" style="font-family:'Chinese Pinyin'; font-size: 38px;"> -->
 										<br />
-										
-										
 										<div class="col-md-3 col-sm-4">
-											<input type="submit" class="form-control" id="sub" value="保存">
-										</div>							
+											<input type="submit" class="form-control" id="sub" value="修改">
+										</div>	
+										<div class="col-md-3 col-sm-4">						
+										<input type="button" class="form-control" id="goback" value="取消">
+										</div>	
 									</div>
+									</c:forEach>
 								</div>
 							</div>
 						</form>

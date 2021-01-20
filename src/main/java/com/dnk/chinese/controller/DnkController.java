@@ -55,6 +55,7 @@ public class DnkController {
 		log.info("Student : " + id);
 		String address = "dnk/lean";
 		ChineseDto cnc = new ChineseDto();
+		ClassDto cd = new ClassDto();
 		try {
 			model.addAttribute("name", id);
 			cnc = dnkService.getStudentDetail(id);
@@ -64,8 +65,9 @@ public class DnkController {
 			model.addAttribute("id", id);
 			List<HomeDto> homelist = dnkService.getHomeWorkTitle(cnc);
 			model.addAttribute("homelist", homelist);
-			List<ClassDto> classlist = dnkService.getClassDetail();
+			List<ClassDto> classlist = dnkService.getClassDetail(cd);
 			model.addAttribute("classlist",classlist);
+			//log.info("test1 >>> " + classlist);
 		} catch (Exception e) {
 			log.info("error"+e);
 			address = "dnk/login";
@@ -218,5 +220,82 @@ public class DnkController {
 		}			
 		return address;
 	}
+	@RequestMapping(value = "/getClassDetail")
+	public String getmemberdetailclass(Model model
+								,@RequestParam(value = "id", defaultValue = "-") String id
+								,@RequestParam(value = "class_seq", defaultValue = "0") int class_seq
+								,@RequestParam(value = "student_seq", defaultValue = "0") int student_seq
+								,@RequestParam(value = "class_title", defaultValue = "-") String class_title
+								) {
+		log.info("getmemberdetailclass >>>>");
+		//log.info("test   >>>>>>> " + id + " : " + class_seq + " : " + student_seq);
+		String address = "dnk/classlist2";
+		String class_detail_af = "";
+		String check = "";
+		model.addAttribute("id", id);
+		model.addAttribute("student_seq", student_seq);
+		ClassDto cd = new ClassDto();
+		cd.setClass_seq(class_seq);
+		cd.setStudent_num(student_seq);
+		cd.setClass_title(class_title);
+		List<ClassDto>classlist = new ArrayList<>();
+		classlist = dnkService.getmemberdetailclass(cd);
+		ClassDto cd2 = new ClassDto();
+		for (int i = 0; i < classlist.size(); i++) {
+			cd2 = classlist.get(i);
+		}
+		check = cd2.getClass_detail_af().substring(0, 2);
+		if (!check.equals("没有")) {
+			cd2.setClass_detail_or(cd2.getClass_detail_af());
+			classlist.clear();
+			classlist.add(cd2);
+		}
+		model.addAttribute("classlist", classlist);
+	//	log.info("test    :     " + check);		
+		return address;
+	}
+	@RequestMapping(value = "/modclass")
+	public String modclass(Model model
+								,@RequestParam(value = "id", defaultValue = "-") String id
+								,@RequestParam(value = "class_detail_af", defaultValue = "-") String class_detail_af
+								,@RequestParam(value = "class_title", defaultValue = "-") String class_title
+								,@RequestParam(value = "class_title_sub", defaultValue = "-") String class_title_sub
+								,@RequestParam(value = "student_seq", defaultValue = "0") int student_seq
+								,@RequestParam(value = "class_seq", defaultValue = "0") int class_seq
+								) {
+		//log.info("modclass >>>> ");
+		String encodingId = "";
+		try {
+			encodingId = URLEncoder.encode(id, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			log.info(e.getMessage());
+		}
+		model.addAttribute("id", id);
+		model.addAttribute("student_seq", student_seq);
+		ClassDto cd = new ClassDto();
+		cd.setClass_seq(class_seq);
+		cd.setClass_title_sub(class_title_sub);
+		cd.setClass_title(class_title);
+		cd.setStudent_num(student_seq);
+		cd.setClass_detail_or("以修改内容");
+		cd.setClass_detail_af(class_detail_af);
+		ClassDto cd2 = new ClassDto();
+		int check = 0;
+		List<ClassDto>classlist = dnkService.getClassDetail(cd);
+		for (int i = 0; i < classlist.size(); i++) {
+			cd2 = classlist.get(i);
+		}
+		check = cd2.getStudent_num();
+		if (check == 99) {
+			log.info("insert Mod : " + cd.getClass_seq());
+			dnkService.modClassGoinsert(cd);
+		} else {
+			log.info("Update Mod : " + cd.getClass_seq());
+			dnkService.modClassGoupdate(cd);
+		}		
+		String address = "redirect:/startlean?id=" + encodingId;
+		return address;
+	}
+	
 	
 }

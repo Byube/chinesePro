@@ -11,10 +11,17 @@
         and		student_status = 10
     </select>
     
-    <select id="getClassDetail" resultType="ClassDto">
+    <select id="getClassDetail" parameterType="ClassDto" resultType="ClassDto">
     	select	*
     	from	classdetail
-    	where	student_num = 99
+    	<choose>
+    		<when test="class_seq != 0">
+    			where	class_seq = #{class_seq}
+    		</when>
+    		<otherwise>
+    			where	student_num = 99
+    		</otherwise>
+    	</choose>
     </select>
     
     <select id="getHomeWorkTitle" parameterType="ChineseDto" resultType="HomeDto">
@@ -62,6 +69,35 @@
     	,#{class_detail_af}
     	)
     </insert>
+    
+    <select id="getmemberdetailclass" parameterType="ClassDto" resultType="ClassDto">
+    	select	*
+		from	classdetail
+		where	class_title = #{class_title}
+		and		student_num = 
+				(
+				case	when
+					(
+					select	count(*)
+					from	classdetail
+					where	student_num = #{student_num}
+					and		class_title = #{class_title}
+					) <![CDATA[ < ]]> 1
+				Then 99
+				else #{student_num}
+				end
+				)
+    </select>
+    
+    <update id="modClassGoupdate" parameterType="ClassDto">
+    	update  classdetail
+		set     class_detail_af = #{class_detail_af}
+		where   class_seq = #{class_seq}
+    </update>
+    
+    
+    
+   
   
 
 </mapper>

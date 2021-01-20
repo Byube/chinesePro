@@ -60,10 +60,17 @@
 				<ul>
 				
 				<c:forEach items="${classlist }" var="cd" varStatus="cnt">
-					<li><a href="javascript:;" onclick="goclassDetail()" style="font-size: 26px;">${cd.class_title }</a></li>
+					<li><a href="javascript:;" onclick="goclassDetail(${cd.class_seq},'${id}',${student_seq },'${cd.class_title }')" style="font-size: 26px;">${cd.class_title }</a></li>
 					</c:forEach>
 				</ul>
 			</div>
+			
+			<form action="/getClassDetail" method="post" id="getClassDetail">
+				<input type="hidden" name="class_seq" id="class_seq">
+				<input type="hidden" name="id" id="id">
+				<input type="hidden" name="student_seq" id="student_seq">
+				<input type="hidden" name="class_title" id="class_title">
+			</form>
 			
 			<div class="row">
 				<div class="col-md-4 col-sm-6">

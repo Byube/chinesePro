@@ -29,8 +29,8 @@ public class DnkServiceImpl implements DnkService {
     }
 
 	@Override
-	public List<ClassDto> getClassDetail() {
-		return dao.getClassDetail();
+	public List<ClassDto> getClassDetail(ClassDto cd) {
+		return dao.getClassDetail(cd);
 	}
 
 	@Override
@@ -59,6 +59,23 @@ public class DnkServiceImpl implements DnkService {
 	public void insertClass(ClassDto cd) {
 		dao.insertClass(cd);
 	}
+
+	@Override
+	public List<ClassDto> getmemberdetailclass(ClassDto cd) {
+		return dao.getmemberdetailclass(cd);
+	}
+
+	@Override
+	public void modClassGoinsert(ClassDto cd) {
+		dao.insertClass(cd);
+	}
+
+	@Override
+	public void modClassGoupdate(ClassDto cd) {
+		dao.modClassGoupdate(cd);		
+	}
+	
+	
 	
 	
 	
