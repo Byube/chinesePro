@@ -54,7 +54,7 @@
 									</div>
 									<c:forEach items="${classlist }" var="cl">
 									<div class="blog-post-title">
-										<h2>${cl.class_title}</h2>
+										<P style="font-family: 'SimHei'; font-size: 48px;">${cl.class_title}</P>
 									</div>
 									<input type="hidden" name="class_title" value="${cl.class_title}">
 									<input type="hidden" name="class_title_sub" value="${cl.class_title_sub}">
@@ -65,11 +65,12 @@
 										<div class="blog-comment">
 											<div class="media">
 												<div class="media-body">
-													<h3 class="media-heading" style="font-family: 'SimHei';">${cl.class_title_sub }</h3>
+													<p class="media-heading" style="font-family: 'SimHei'; font-size: 28px;" >${cl.class_title_sub }</p>
 												</div>
 											</div>
 										</div>
-										<textarea class="form-control" style="font-family:'Chinese Pinyin'; font-size: 38px;" name="class_detail_af" id="class_detail_af" rows="30">${cl.class_detail_or }</textarea>
+										<textarea class="form-control" style="font-family: 'SimHei'; font-size: 38px;" name="class_detail_af" id="class_detail_af" rows="30">${cl.class_detail_or }</textarea>
+										<%-- <textarea class="form-control" style="font-family:'Chinese Pinyin'; font-size: 38px;" name="class_detail_af" id="class_detail_af" rows="30">${cl.class_detail_or }</textarea> --%>
 										<hr size="5" width="100%" color="black">
 										<hr size="5" width="100%" color="black">
 										<!-- <input type="text" style="font-family:'Chinese Pinyin'; font-size: 38px;"> -->
